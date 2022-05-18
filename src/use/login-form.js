@@ -20,10 +20,13 @@ export function useLoginForm() {
     const isTooManyAttempts = computed(() => submitCount.value >= 3)
     watch(isTooManyAttempts, v => { if(v) { setTimeout(() => submitCount.value = 0, 1500) }})
 
-    const onSubmit = handleSubmit(async values => { 
-        console.log('form', values); 
-        await store.dispatch('auth/login', values)
-        router.push('/')
+    const onSubmit = handleSubmit(async values => {
+        try {
+            await store.dispatch('auth/login', values)
+            router.push('/')
+        } catch (e) {
+
+        }
     })
     return {email, password, eError, pError, eBlur, pBlur, onSubmit, isSubmitting,
         isTooManyAttempts}

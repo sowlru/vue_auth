@@ -5,7 +5,7 @@
             <li><router-link to="/">Заявки</router-link></li>
             <li><router-link to="/help">Помощь</router-link></li>
             <li><router-link to="/auth">Auth</router-link></li>
-            <!-- <li><a href="#">Сообщения </a></li> -->
+            <li><a href="#">Сообщения </a></li>
             <li><a href="#" @click.prevent="logout">Выход</a></li>
         </ul>
     </nav>
