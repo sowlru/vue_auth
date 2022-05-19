@@ -5,14 +5,32 @@
             <tr><th>#</th><th>ФИО</th><th>Телефон</th><th>Сумма</th><th>Статус</th><th>Действия</th></tr>
         </thead>
         <tbody>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <!-- <tr v-for="{r, idx} in requests[0]" :key="r.idx">
+                <th>{{ idx+1 }}</th><th>#</th><th>#</th><th>#</th><th>#</th><th>#</th>
+            </tr> -->
+            <!-- <tr>
+                <th>{{ requests[0][0].amount }}</th><th>#</th><th>#</th><th>#</th><th>#</th><th>#</th>
+            </tr> -->
+            <tr v-for="(r,idx) in requests[0]" :key="r.id">
+                <td>{{idx+1}}</td>
+                <td>{{r.fio}}</td>
+                <td>{{r.phone}}</td>
+                <td>{{r.amount}}</td>
+                <td>{{r.status}}</td>
+                <td>
+                    <router-link v-slot="{navigate}" custom :to="{name:'Requests', params: {id:r.id}}">
+                        <button class="btn primary" @click="navigate">Open</button>
+                    </router-link>
+                </td>
+            </tr>
         </tbody>
     </table>
 </template>
 
 <script>
 export default {
-    props: ['requests']
+    props: ['requests'],
+    // setup(props) { return { console.log(props.requests) }}
     
 }
 </script>
